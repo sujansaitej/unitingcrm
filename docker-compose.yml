@@ -102,9 +102,6 @@ services:
     depends_on:
       - backend
       - websocket
-    networks:
-      - default
-      - dokploy-network
 
   websocket:
     <<: [*depends_on_configurator, *customizable_image]
@@ -157,7 +154,3 @@ services:
 volumes:
   db-data:
   sites:
-
-networks:
-  dokploy-network:
-    external: true
