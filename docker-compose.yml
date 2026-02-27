@@ -82,7 +82,7 @@ services:
   backend:
     <<: *backend_defaults
 
-  frontend:
+  main-app:
     <<: *customizable_image
     command:
       - nginx-entrypoint.sh
