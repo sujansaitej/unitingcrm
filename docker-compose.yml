@@ -1,3 +1,6 @@
+# Uniting CRM docker-compose
+# Deployed via Dokploy — Traefik labels are managed by Dokploy
+
 x-customizable-image: &customizable_image
   build:
     context: .
@@ -102,6 +105,9 @@ services:
     depends_on:
       - backend
       - websocket
+    networks:
+      - default
+      - dokploy-network
 
   websocket:
     <<: [*depends_on_configurator, *customizable_image]
@@ -154,3 +160,7 @@ services:
 volumes:
   db-data:
   sites:
+
+networks:
+  dokploy-network:
+    external: true
